@@ -1,0 +1,17 @@
+
+ body {
+  
+  font: 13px/20px ;
+  color: #D3D3D3;
+   background-image: url("images/red_line_background.jpg");
+  background-repeat: no-repeat;
+ 
+}
+div{
+text-align:center;
+margin:150px auto;
+position: relative;
+width: 250px;
+
+
+}

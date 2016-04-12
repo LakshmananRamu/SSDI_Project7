@@ -1,0 +1,172 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+         version="2.5" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         > 
+
+  <display-name>Web_application process</display-name>
+   <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+      </welcome-file-list>
+      <servlet>
+    <servlet-name>StudentQuestionsServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentQuestionsServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentQuestionsServlet</servlet-name>
+ <url-pattern>/StudentQuestionsServlet</url-pattern>
+</servlet-mapping>
+      
+   <servlet>
+    <servlet-name>LoginControllerServlet</servlet-name>
+ <servlet-class>com.institute.controller.LoginControllerServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>LoginControllerServlet</servlet-name>
+ <url-pattern>/LoginControllerServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+    <servlet-name>StudentProfileServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentProfileServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentProfileServlet</servlet-name>
+ <url-pattern>/StudentProfileServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentEmployerServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentEmployerServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentEmployerServlet</servlet-name>
+ <url-pattern>/StudentEmployerServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>StudentContactinfoServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentContactinfoServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentContactinfoServlet</servlet-name>
+ <url-pattern>/StudentContactinfoServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>StudentEducationServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentEducationServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentEducationServlet</servlet-name>
+ <url-pattern>/StudentEducationServlet</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+    <servlet-name>SignupControllerServlet</servlet-name>
+ <servlet-class>com.institute.controller.SignupControllerServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>SignupControllerServlet</servlet-name>
+ <url-pattern>/SignupControllerServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>IndexControllerServlet</servlet-name>
+ <servlet-class>com.institute.controller.IndexControllerServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>IndexControllerServlet</servlet-name>
+ <url-pattern>/IndexControllerServlet</url-pattern>
+</servlet-mapping>
+
+<servlet >
+<servlet-name>JspServletApp</servlet-name>
+<servlet-class>com.institute.controller.loginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>JspServletApp</servlet-name>
+<url-pattern>/login</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>JspServletAppllication</servlet-name>
+<servlet-class>com.institute.controller.applicationServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>JspServletAppllication</servlet-name>
+<url-pattern>/application</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>JspServletWeightage</servlet-name>
+<servlet-class>com.institute.controller.Weightageservlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>JspServletWeightage</servlet-name>
+<url-pattern>/Weightage</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ListAppServletWeightage</servlet-name>
+<servlet-class>com.institute.controller.AppList</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ListAppServletWeightage</servlet-name>
+<url-pattern>/AppListControllerServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ListAppServletcustom</servlet-name>
+<servlet-class>com.institute.controller.StudentCustomServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ListAppServletcustom</servlet-name>
+<url-pattern>/StudentCustomServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentSubmitServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentSubmitServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentSubmitServlet</servlet-name>
+ <url-pattern>/StudentSubmitServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentHomeServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentHomeServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentHomeServlet</servlet-name>
+ <url-pattern>/StudentHomeServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>StudentEditapplicationServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentEditapplicationServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentEditapplicationServlet</servlet-name>
+ <url-pattern>/StudentEditapplicationServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentEditServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentEditServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentEditServlet</servlet-name>
+ <url-pattern>/StudentEditServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentPaymentServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentPaymentServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentPaymentServlet</servlet-name>
+ <url-pattern>/StudentPaymentServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentNewapplicationServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentNewapplicationServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentNewapplicationServlet</servlet-name>
+ <url-pattern>/StudentNewapplicationServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>
+
