@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.institute.models.Admin" table="Department_Application">
+	<id name="DeptId" type="int" column="Dept_Id">
+        <generator class="assigned" />
+</id> 
+<property name="CustomSection" column="Custom_Sections_Available" type="string"/>
+<property name="CustomQuestion1" column="Custom_Question_1" type="string"/>
+<property name="CustomQuestion2" column="Custom_Question_2" type="string"/>
+   <property name="CustomQuestion3" column="Custom_Question_3" type="string"/>
+   <property name="CustomQuestion4" column="Custom_Question_4" type="string"/>
+   <property name="CustomQuestion5" column="Custom_Question_5" type="string"/>
+              
+	</class>
+	
+</hibernate-mapping>
