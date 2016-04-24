@@ -1,16 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      <%@ page import = "com.institute.models.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
  <%@ page import = "com.institute.models.students" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Contact info</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
+  #next,
+#previous{
+    display: inline-block;
+    vertical-align: top;
+}
 #header {
 		background-color:#00703C;
 		color:white;
@@ -39,50 +45,73 @@ logon to the portal and click the "Update Your Profile Information" left menu it
 </div>
 
 <form action="StudentContactinfoServlet" method="post" >
+<div class="container">
 
-<input type="hidden" name ="email" value="<%= request.getAttribute("email") %>">
+<input type="hidden" name="model" value="<%= session.getAttribute("model") %>">
+<input type="hidden" name ="email" value="<%= session.getAttribute("email") %>">
+<%Student_profile m = new Student_profile();
+	String con="";
+	String add1="";
+	String add2="";
+	String city="";
+	String state="";
+	String postal="";
+	String phone="";
+	%>
+<%if(session.getAttribute("model")!=null ) {%>
+<% m= (Student_profile)session.getAttribute("model");
+ con=(m.getCountry() == null) ? " ":m.getCountry() ;
+ add1= (m.getAdd1() == null) ? "":m.getAdd1();
+ add2= (m.getAdd2() == null) ? "":m.getAdd2() ;
+city=(m.getCity() == null) ? " ":m.getCity() ;
+state= (m.getState()== null) ? "":m.getState();
+postal=(m.getPostal() == null) ? "":m.getPostal() ;
+phone=(m.getPhone() == null) ? "":m.getPhone() ;
+
+}  %>
  <br>
  <br>
- <div class="text">
-<div class="col-sm-4" style="background-color:white;">Country<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="Country">
+ <div class="row">
+<div class="col-sm-4" style="background-color:white; ">Country<span style="color:red">*</span>
+  </div><input type="text" name="Country" value="<%=con%>" required>
  </div>
  <br>
- <div class="text">
-<div class="col-sm-4" style="background-color:white;">Address Line 1<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="Addline1">
+ <div class="row">
+<div class="col-sm-4" style="background-color:white; ">Address Line 1<span style="color:red">*</span>
+  </div><input type="text" name="Addline1" value="<%=add1%>" required>
  </div>
  <br>
  
- <div class="text">
+ <div class="row">
 <div class="col-sm-4" style="background-color:white;">Address Line 2
-  </div><input type="text" name="Addline2">
+  </div><input type="text" name="Addline2" value="<%=add2%>">
  </div>
  <br>
  
- <div class="text">
-<div class="col-sm-4" style="background-color:white;">City<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="City">
+ <div class="row">
+<div class="col-sm-4" style="background-color:white;">City<span style="color:red">*</span>
+  </div><input type="text" name="City" value="<%=city%>" required>
  </div>
  <br>
- <div class="text">
-<div class="col-sm-4" style="background-color:white;">State/Province:<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="State">
+ <div class="row">
+<div class="col-sm-4" style="background-color:white;">State/Province:<span style="color:red">*</span>
+  </div><input type="text" name="State" value="<%=state%>" required>
 </div>
  <br>
-<div class="text">
-<div class="col-sm-4" style="background-color:white;">Postal code:<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="Postal"></div>
+<div class="row">
+<div class="col-sm-4" style="background-color:white;">Postal code:<span style="color:red">*</span>
+  </div><input type="text" name="Postal" value="<%=postal%>" required></div>
   
    <br>
- <div class="text">
-<div class="col-sm-4" style="background-color:white;">Phone Number:<div class="col-sm-1" style="color:red;">*</div>
-  </div><input type="text" name="Phone">
+ <div class="row">
+<div class="col-sm-4" style="background-color:white;">Phone Number:<span style="color:red">*</span>
+  </div><input type="text" name="Phone" value="<%=phone%>" required>
  </div>
  <br>
   
   <br>
-  <div class ="submit"> <input type="submit" name="previous" value="previous"> <input type="submit" name="next" value="next"></div>
+  <div class ="submit" align="center"> <input id="previous" class="btn btn-info center-block " type="submit"  name="previous" value="previous"> <input id="next" class="btn btn-info center-block " type="submit" name="next" value="next"></div>
+ </div>
  </form>
 
   

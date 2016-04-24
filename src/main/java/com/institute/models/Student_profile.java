@@ -11,20 +11,14 @@ public class Student_profile {
 	private String firstname;
 	@Column (name="lastname")
 	private String lastname;
-	@Column (name="suffix")
-	private String suffix;
 	@Column(name = "salutation")
 	private String salutation;
 	@Column(name = "prefname")
 	private String prefname;
 	@Column (name="sex")
 	private String sex;
-	@Column (name="month")
-	private int month;
-	@Column (name="date")
-	private int date;
-	@Column (name="year")
-	private int year;
+	@Column(name = "dob")
+	private String dob;
 	@Column(name = "country")
 	private String country;
 	@Column(name = "state")
@@ -47,14 +41,12 @@ public class Student_profile {
 	private double GRE;
 	@Column(name="GPA")
 	private double GPA;
-	@Column(name="grad_from_m")
-	private double grad_from_m;
-	@Column(name="grad_from_y")
-	private double grad_from_y;
-	@Column(name="grad_to_m")
-	private double grad_to_m;
-	@Column(name="grad_to_y")
-	private double grad_to_y;
+	@Column(name="grad_from")
+	private String grad_from;
+	@Column (name="college")
+	private String college;
+	@Column(name="grad_to")
+	private String grad_to;
 	@Column(name = "degree")
 	private String degree;
 	@Column(name = "major")
@@ -65,20 +57,18 @@ public class Student_profile {
 	private String pos;
 	@Column(name = "workedcountry")
 	private String con;
+	@Column(name = "firm")
+	private String firm;
+	public String getFirm() {
+		return firm;
+	}
+	public void setFirm(String firm) {
+		this.firm = firm;
+	}
 	@Column(name = "experience")
 	private double exp;
 	@Column(name = "completed")
 	private int completed;
-	@Column(name = "custom1")
-	private String custom1;
-	@Column(name = "custom2")
-	private String custom2;
-	@Column(name = "custom3")
-	private String custom3;
-	@Column(name = "custom4")
-	private String custom4;
-	@Column(name = "custom5")
-	private String custom5;
 	
 	
 	
@@ -137,30 +127,7 @@ public class Student_profile {
 	public void setGPA(double gPA) {
 		GPA = gPA;
 	}
-	public double getGrad_from_m() {
-		return grad_from_m;
-	}
-	public void setGrad_from_m(double grad_from_m) {
-		this.grad_from_m = grad_from_m;
-	}
-	public double getGrad_from_y() {
-		return grad_from_y;
-	}
-	public void setGrad_from_y(double grad_from_y) {
-		this.grad_from_y = grad_from_y;
-	}
-	public double getGrad_to_m() {
-		return grad_to_m;
-	}
-	public void setGrad_to_m(double grad_to_m) {
-		this.grad_to_m = grad_to_m;
-	}
-	public double getGrad_to_y() {
-		return grad_to_y;
-	}
-	public void setGrad_to_y(double grad_to_y) {
-		this.grad_to_y = grad_to_y;
-	}
+	
 	public String getDegree() {
 		return degree;
 	}
@@ -174,6 +141,24 @@ public class Student_profile {
 		this.major = major;
 	}
 
+	public String getGrad_from() {
+		return grad_from;
+	}
+	public void setGrad_from(String grad_from) {
+		this.grad_from = grad_from;
+	}
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
+	}
+	public String getGrad_to() {
+		return grad_to;
+	}
+	public void setGrad_to(String grad_to) {
+		this.grad_to = grad_to;
+	}
 	public String getCountry() {
 		return country;
 	}
@@ -237,12 +222,7 @@ public class Student_profile {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public String getSuffix() {
-		return suffix;
-	}
-	public void setSuffix(String suffix) {
-		this.suffix = suffix;
-	}
+	
 	public String getSalutation() {
 		return salutation;
 	}
@@ -261,53 +241,11 @@ public class Student_profile {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public int getMonth() {
-		return month;
+	public String getDob() {
+		return dob;
 	}
-	public void setMonth(int month) {
-		this.month = month;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
-	public int getDate() {
-		return date;
-	}
-	public void setDate(int date) {
-		this.date = date;
-	}
-	public int getYear() {
-		return year;
-	}
-	public void setYear(int year) {
-		this.year = year;
-	}
-	public String getcustom1() {
-		return custom1;
-	}
-	public void setcustom1(String custom1) {
-		this.custom1 = custom1;
-	}
-	public String getcustom2() {
-		return custom1;
-	}
-	public void setcustom2(String custom2) {
-		this.custom2 = custom2;
-	}
-	public String getcustom3() {
-		return custom3;
-	}
-	public void setcustom3(String custom3) {
-		this.custom3 = custom3;
-	}
-	public String getcustom4() {
-		return custom4;
-	}
-	public void setcustom4(String custom4) {
-		this.custom4 = custom4;
-	}
-	public String getcustom5() {
-		return custom1;
-	}
-	public void setcustom5(String custom5) {
-		this.custom5 = custom5;
-	}
-
+	
 }

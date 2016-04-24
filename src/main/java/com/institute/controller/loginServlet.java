@@ -11,9 +11,10 @@ import javax.swing.JOptionPane;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.institute.dao.AdminDAO;
-import com.institute.models.Admin;
-import com.institute.dao.StudentDao;
+
+import com.institute.models.*;
+import com.institute.dao.*;
+import com.institute.controller.*;
 import com.institute.models.Student_profile;
 
 /**
@@ -49,17 +50,17 @@ public class loginServlet extends HttpServlet {
         if (action == null) {
             url = "/AdminHome.jsp";
         }
-        if (action.equals("Create CS Application form")) 
+        if (action.equals("Create CS Application form")||action.equals("Send Email to Selected CS Students")||action.equals("Send Email to Rejected CS Students")) 
         {
         	this.Dept_ID="Create CS Application form";
         	Dept=1;
         }
-        if (action.equals("Create EE Application form")) 
+        if (action.equals("Create EE Application form")||action.equals("Send Email to Selected EE Students")||action.equals("Send Email to Rejected EE Students")) 
         {
         	this.Dept_ID="Create EE Application form";
         	Dept=2;
         }
-        if (action.equals("Create ME Application form")) 
+        if (action.equals("Create ME Application form")||action.equals("Send Email to Selected ME Students")||action.equals("Send Email to Rejected ME Students")) 
         {
         	this.Dept_ID="Create ME Application form";
         	Dept=3;
@@ -159,7 +160,7 @@ public class loginServlet extends HttpServlet {
                 applications= StudentDao.getDeptID(this.Dept);
             	for(int i=0;i<applications.size();i++)
             	{
-            		applications.set(0,"1. "+applications.get(0));
+            		applications.set(0,applications.get(0));
             	}
                 request.setAttribute("applications", applications);
                 
@@ -180,8 +181,41 @@ public class loginServlet extends HttpServlet {
             {
             	url="/EEWeightage.jsp";
             }
-                          
-            
+            if (action.equals("Setup Student Vacancies for ME Applications"))
+            {
+            	url="/MEStudentVacancies.jsp";
+            }
+            if (action.equals("Setup Student Vacancies for CS Applications"))
+            {
+            	url="/CSStudentVacancies.jsp";
+            }
+            if (action.equals("Setup Student Vacancies for EE Applications"))
+            {
+            	url="/EEStudentVacancies.jsp";
+            }
+            List<String>applications;
+                 if(action.equals("Send Email to Selected ME Students")||action.equals("Send Email to Selected EE Students")||action.equals("Send Email to Selected CS Students"))          
+                 {
+                	 StudentStatusDao status=new StudentStatusDao();
+                	 applications=StudentStatusDao.getDeptID("selected", Dept);
+                 SendEmail email=new SendEmail();
+                 for(int i=0;i<applications.size();i++)
+                 {
+                	email.sendtomail(applications.get(i)); 
+                 }
+                 url="/AdminHome.jsp";
+                 }
+                 if(action.equals("Send Email to Rejected ME Students")||action.equals("Send Email to Rejected EE Students")||action.equals("Send Email to Rejected CS Students"))          
+                 {
+                	 StudentStatusDao status=new StudentStatusDao();
+                	 applications=StudentStatusDao.getDeptID("rejected", Dept);
+                 SendEmail email=new SendEmail();
+                 for(int i=0;i<applications.size();i++)
+                 {
+                	email.sendtomailreject(applications.get(i)); 
+                 }
+                 url="/AdminHome.jsp";
+                 }
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
 	}

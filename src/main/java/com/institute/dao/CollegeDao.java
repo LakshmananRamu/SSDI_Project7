@@ -110,20 +110,20 @@ public static void insert_into_department_db(String email, String password, Stri
 	
 }
 
-public  Department check_for_email_password_department(String mailid){
+public  officer check_for_email_password_department(String mailid){
 	
-	 Department model = new Department();
-	SessionFactory sessionfactory =  new Configuration().configure("Department.cfg.xml").buildSessionFactory();
+	 officer model = new officer();
+	SessionFactory sessionfactory =  new Configuration().configure("officer.cfg.xml").buildSessionFactory();
 	Session session = sessionfactory.openSession();
 	session.beginTransaction();
-	String hql = " FROM departmentlogindetails u WHERE u.Emailid = :emailId";
+	String hql = " FROM officerlogindetails u WHERE u.Emailid = :emailId";
 	Query query = session.createQuery(hql);
 	query.setParameter("emailId",mailid);
 
 	
 
 	@SuppressWarnings("unchecked")
-	List<Department> resultList = query.list();
+	List<officer> resultList = query.list();
 	
 	if (resultList.isEmpty()) {
 		System.out.println("user not registered");

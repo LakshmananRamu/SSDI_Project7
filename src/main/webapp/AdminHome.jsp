@@ -124,6 +124,10 @@ Released   : 20131025
 			<input type="submit" class="button button1" name="action" value="Edit CS Application form"/>
 			<input type="submit" class="button button1" name="action" value="View all CS applications"/>
 			<input type="submit" class="button button1" name="action" value="Setup Weightage for CS Applications"/>
+			<input type="submit" class="button button1" name="action" value="Setup Student Vacancies for CS Applications"/>
+			<input type="submit" class="button button1" name="action" value="Send Email to Selected CS Students"/>
+			<input type="submit" class="button button1" name="action" value="Send Email to Selected CS Students"/>
+			<input type="submit" class="button button1" name="action" value="Send Email to Rejected CS Students"/>
 			
 			</form>
 			</div>
@@ -136,6 +140,9 @@ Released   : 20131025
 			<input type="submit" class="button button2" name="action" value="Edit EE Application form"/>
 			<input type="submit" class="button button2" name="action" value="View all EE Applications"/>
 			<input type="submit" class="button button2" name="action" value="Setup Weightage for EE Applications"/>
+			<input type="submit" class="button button2" name="action" value="Setup Student Vacancies for EE Applications"/>
+			<input type="submit" class="button button2" name="action" value="Send Email to Selected EE Students"/>
+			<input type="submit" class="button button2" name="action" value="Send Email to Rejected EE Students"/>
 			
 			</form>
 			</div>
@@ -148,6 +155,9 @@ Released   : 20131025
 			<input type="submit" class="button button3" name="action" value="Edit ME Application form"/>
 			<input type="submit" class="button button3" name="action" value="View all ME Applications"/>
 			<input type="submit" class="button button3" name="action" value="Setup Weightage for ME Applications"/>
+			<input type="submit" class="button button3" name="action" value="Setup Student Vacancies for ME Applications"/>
+			<input type="submit" class="button button3" name="action" value="Send Email to Selected ME Students"/>
+			<input type="submit" class="button button3" name="action" value="Send Email to Rejected ME Students"/>
 			
 			</form>
 			</div>

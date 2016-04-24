@@ -85,7 +85,8 @@ private static final long serialVersionUID = 1L;
 				   	}
 				   	int completed = 1;
 				   	Admin user=new Admin();
-				   	StudentDao.insert_into_custom_db(email,custom1,custom2,custom3,custom4,custom5);
+				   	DepartmentsDao.insert_into_cs_db(email,Integer.parseInt(custom1),Integer.parseInt(custom2)
+				   			,Integer.parseInt(custom3),Integer.parseInt(custom4),Integer.parseInt(custom5));
 				    request.setAttribute("email", email);
 				   	
 					String action = request.getParameter("previous");

@@ -72,6 +72,7 @@ public class StudentNewapplicationServlet extends HttpServlet {
 							m1 = DepartmentsDao.search_fro_email_cs(email);
 							session.setAttribute("m", m1);
 							if(m1!=null){
+								request.setAttribute("msg", "error");
 								url="/Home.jsp";
 								getServletContext().getRequestDispatcher(url).forward(request, response);
 							}
@@ -86,7 +87,8 @@ public class StudentNewapplicationServlet extends HttpServlet {
 					   	m2 = DepartmentsDao.search_fro_email_me(email);
 					   	session.setAttribute("m", m2);
 					   	if(m2!=null){
-							url="/Home.jsp";
+					   		request.setAttribute("msg","error");
+					   			url="/Home.jsp";
 							getServletContext().getRequestDispatcher(url).forward(request, response);
 							}
 					   	else{
@@ -102,6 +104,7 @@ public class StudentNewapplicationServlet extends HttpServlet {
 					   	m3 = DepartmentsDao.search_fro_email_ee(email);
 					   	session.setAttribute("m", m3);
 					   	  if(m3!=null){
+					   		request.setAttribute("msg", "error");
 							url="/Home.jsp";
 							getServletContext().getRequestDispatcher(url).forward(request, response);
 							}

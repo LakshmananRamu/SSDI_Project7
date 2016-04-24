@@ -67,7 +67,7 @@ public class LoginControllerServlet extends HttpServlet {
 			       
 			
 	      } 
-	      else if(action.equals("office")){
+	      else if(action.equals("officer")){
 	    	  officer model = new officer();
 	    	  CollegeDao collegedao = new CollegeDao();
 	    	  model= collegedao.check_for_email_password_office(emailid);
@@ -75,7 +75,7 @@ public class LoginControllerServlet extends HttpServlet {
 			  if(model != null){
 			  if(emailid.equals(model.getEmailid())&& password.equals(model.getPassword())){
 				  session.setAttribute("email", model.getEmailid());
-				  url="/Home.jsp";
+				  url="/AdminHome.jsp";
 			  }
 			  else if(emailid.equals(model.getEmailid())&& !password.equals(model.getPassword())){
 				  request.setAttribute("errmessage", "*incorrect password");
@@ -94,33 +94,7 @@ public class LoginControllerServlet extends HttpServlet {
 		       
 		
 	      }
-	      else{
-	    	  Department model = new Department();
-    	  CollegeDao collegedao = new CollegeDao();
-    	  model = collegedao.check_for_email_password_department(emailid);
-
-		  if(model != null){
-		  if(emailid.equals(model.getEmailid())&& password.equals(model.getPassword())){
-			  session.setAttribute("email", model.getEmailid());
-			  url="/ApplicationForm.jsp";
-		  }
-		  else if(emailid.equals(model.getEmailid())&& !password.equals(model.getPassword())){
-			  request.setAttribute("errmessage", "*incorrect password");
-			  request.setAttribute("given_email", emailid);
-			  request.setAttribute("given_password", password);
-			  url="/Department_login.jsp";
-		  }
-		}
-		  else {
-			  request.setAttribute("errmessage", "*incorrect credentials");
-			  request.setAttribute("given_email", emailid);
-			  request.setAttribute("given_password", password);
-			  url="/Department_login.jsp";
-		}
-  
-      }
-	      
-		        getServletContext().getRequestDispatcher(url).forward(request, response);
+	      		        getServletContext().getRequestDispatcher(url).forward(request, response);
 		
 	}
 }

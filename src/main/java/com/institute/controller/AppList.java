@@ -14,9 +14,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.institute.models.Student_profile;
+import com.institute.models.*;
 import com.institute.models.StudentWeightage;
-import com.institute.dao.StudentWeightageDao;
+import com.institute.dao.*;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -27,6 +27,8 @@ import javax.swing.JOptionPane;
 
 public class AppList extends HttpServlet {
 	
+	private String revstring;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
@@ -36,14 +38,13 @@ public class AppList extends HttpServlet {
 			
 		 String url = "";
 		
-		 String action1 = request.getParameter("action");
-		 String action=action1.substring(3, action1.length());
+		 String action = request.getParameter("action");
+		 
 		 System.out.println("abc"+action);
-		 System.out.println("abc"+action1);
+		 
 		 SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
 			Session session = sessionfactory.openSession();
 			session.beginTransaction();
-			
 			
 			Student_profile user = new Student_profile();
 
@@ -60,6 +61,9 @@ public class AppList extends HttpServlet {
     		
     			StudentWeightage student=new StudentWeightage();
 				student=StudentWeightageDao.getDeptID(result.get(0));
+				StudentStatus status=new StudentStatus();
+				StudentStatusDao status1=new StudentStatusDao();
+				status=status1.getstatus(result.get(0));
 				int GPA=student.getGPA();
 				int GRE=student.getGRE();
 				int IELTS=student.getIELTSorTOEFL();
@@ -67,7 +71,8 @@ public class AppList extends HttpServlet {
 				int custom=student.getCustomQuestions();
 				int degree=student.getBachelorsDegree();
 				int total=degree+Work+IELTS+custom+GPA+GRE;
-				JOptionPane.showMessageDialog(null, "<html>"+"<h1> Name :"+action+"</h1></br><h2>Weightage Sections</h2></br><b>GPa</b> : "+GPA+"<br> <b>GRE</b> : "+GRE+"<br> <b>IELTSorTOEFL</b> : "+IELTS+"<br> <b>Work Experience</b> : "+Work+"<br> <b>Custom Questions</b> : "+custom+"<br> <b>Bachelor's Degree</b> : "+degree+"<br> <b>Total Weightage</b> : "+total+"</html>", "InfoBox:Status " , JOptionPane.INFORMATION_MESSAGE);
+				String result1=status.getStatus();
+				JOptionPane.showMessageDialog(null, "<html>"+"<h1> Name :"+action+"</h1></br><h2>Weightage Sections</h2></br><b>GPa</b> : "+GPA+"<br> <b>GRE</b> : "+GRE+"<br> <b>IELTSorTOEFL</b> : "+IELTS+"<br> <b>Work Experience</b> : "+Work+"<br> <b>Custom Questions</b> : "+custom+"<br> <b>Bachelor's Degree</b> : "+degree+"<br> <b>Total Weightage</b> : "+total+"<br> <b>Status</b> : "+result1+"</html>", "InfoBox:Status " , JOptionPane.INFORMATION_MESSAGE);
             	request.setAttribute("msg", "Application already exists");
                 url = "/applications.jsp";
                 session1.getTransaction().commit();

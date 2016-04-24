@@ -167,6 +167,22 @@
     <servlet-name>StudentNewapplicationServlet</servlet-name>
  <url-pattern>/StudentNewapplicationServlet</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>StudentVacanciesServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentVacanciesServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentVacanciesServlet</servlet-name>
+ <url-pattern>/studentVacancies</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>StudentstatusServlet</servlet-name>
+ <servlet-class>com.institute.controller.StudentstatusServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentstatusServlet</servlet-name>
+ <url-pattern>/StudentStatusServlet</url-pattern>
+</servlet-mapping>
 
 </web-app>
 

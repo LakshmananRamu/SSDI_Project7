@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+          <%@ page import = "com.institute.models.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,6 +23,11 @@
  		height:10;
  		padding:5px;
  		}
+ 		 #next,
+#previous{
+    display: inline-block;
+    vertical-align: top;
+}
  
  	</style>
 </head>
@@ -34,13 +40,33 @@
 <br>
 
 <form action="StudentEmployerServlet" method="post">
-<input type="hidden" name ="email" value="<%= request.getAttribute("email") %>">
-<div class="col-sm-4" style="background-color:white;"><p>What is your current employee status</p>
+
+<input type="hidden" name="model" value="<%= session.getAttribute("model") %>">
+<input type="hidden" name ="email" value="<%= session.getAttribute("email") %>">
+<%Student_profile m = new Student_profile();
+	int exp=0;
+	String emp="";
+	String firm="";
+	String pos="";
+	String con="";
+	
+	%>
+<%if(session.getAttribute("model")!=null ) {%>
+<% m= (Student_profile)session.getAttribute("model");
+ exp=(int)m.getExp()  ;
+emp=(m.getEmp_status() == null) ? " ":m.getEmp_status() ;
+firm= (m.getFirm()== null) ? "":m.getFirm();
+pos=(m.getPos() == null) ? "": m.getPos() ;
+con=(m.getCon() == null) ? "":m.getCon() ;
+
+}  %>
+
+
+<div class="col-sm-4" style="background-color:white;"><p>What is your current employee status<span style="color:red">*</span></p>
   </div>
   <select name="emp_status">
-  <option value=" "></option>
- <option value="employed">employed</option>
- <option value="unemployed">unemployed</option>
+ <option value="employed" <%if(emp.equals("employed")){ %>selected <%} %>>employed</option>
+ <option value="unemployed" <%if(emp.equals("unemployed")){ %>selected <%} %>>unemployed</option>
  </select>
 
  <br>
@@ -49,21 +75,21 @@
 <div class="text">
 <p> If Yes,</p>
 <div class="col-sm-4" style="background-color:white;">Employer or Firm:
-  </div><input type="text" name="frim">
+  </div><input type="text" name="frim" value="<%=firm%>">
  </div>
  <br>
 <div class="text">
 <div class="col-sm-4" style="background-color:white;">Position:
-  </div><input type="text" name="pos">
+  </div><input type="text" name="pos" value="<%=pos%>">
 </div>
  <br>
  <div class="text">
 <div class="col-sm-4" style="background-color:white;">Country
-  </div><input type="text" name="con">
+  </div><input type="text" name="con" value="<%=con%>">
  </div><br>
 <div class="text">
 <div class="col-sm-4" style="background-color:white;">Experience(in months)
-  </div><input type="text" name="exp">
+  </div><input type="text" name="exp" value="<%=exp %>">
  </div>
  <br>
 <div class ="submit"> <input type="submit" name="previous" value="previous"> <input type="submit" name="submit" value="submit"></div>

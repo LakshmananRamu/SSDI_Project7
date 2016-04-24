@@ -52,7 +52,7 @@ public class StudentDao {
 		
 	}
 	
-	public static void insert_into_Student_profile_db(String email,String Salutation,String firstname,String lastname,String suffix,String pref_name,String sex,int month,int date,int year) {
+	public static void insert_into_Student_profile_db(String email,String Salutation,String firstname,String lastname,String pref_name,String sex,String dob) {
 		// TODO Auto-generated method stub
 		Student_profile model = new Student_profile();
 		
@@ -71,11 +71,9 @@ public class StudentDao {
 			
 			model.setFirstname(firstname);;
 			model.setLastname(lastname);
-			model.setSuffix(suffix);
-			model.setDate(date);
-			model.setMonth(month);
+			
 			model.setSex(sex);
-			model.setYear(year);
+			model.setDob(dob);
 			model.setSalutation(Salutation);
 			model.setPrefname(pref_name);
 			session.save(model);
@@ -85,15 +83,7 @@ public class StudentDao {
 		session.close();
 		
 	}
-	public static Student_profile check_for_email( String email){
-		Student_profile model = new Student_profile();
-		
-		SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
-		model=session.get(Student_profile.class, email );
-		return model;
-	}
+
 	public static void insert_into_Student_contactinfo_db(String email,String country,String add1,String add2,String city,String state,String postal,String phone) {
 		// TODO Auto-generated method stub
 		Student_profile model = new Student_profile();
@@ -150,7 +140,7 @@ public class StudentDao {
 	}
 
 	public static void insert_into_Student_Education_db(String email, double GRE, double TOFEL, double IELTS,
-			double GPA, double from_m, double from_y, double to_m, double to_y, String degree, String major) {
+			double GPA,String date1, String date2, String degree, String major ,String college) {
 		
 		Student_profile model = new Student_profile();
 		
@@ -160,10 +150,9 @@ public class StudentDao {
 		model=session.get(Student_profile.class, email );
 		model.setGPA(GPA);
 		model.setGRE(GRE);
-		model.setGrad_from_m(from_m);
-		model.setGrad_from_y(from_y);
-		model.setGrad_to_m(to_m);
-		model.setGrad_to_y(to_y);
+		model.setGrad_from(date1);
+		model.setCollege(college);
+		model.setGrad_to(date2);
 		model.setIELTS(IELTS);
 		model.setTOFEL(TOFEL);
 		model.setDegree(degree);
@@ -174,7 +163,7 @@ public class StudentDao {
 	}
 
 	public static void insert_into_Student_Employer_db(String email, double exp, String emp_status, String pos,
-			String con, int completed) {
+			String con,String firm, int completed) {
 		Student_profile model = new Student_profile();
 		
 		SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
@@ -186,31 +175,24 @@ public class StudentDao {
 		model.setEmp_status(emp_status);
 		model.setCon(con);
 		model.setPos(pos);
+		model.setFirm(firm);
 		model.setCompleted(completed);
 			
 		System.out.println("value stored in Db");	
 		session.getTransaction().commit();
 		session.close();
 	}
-	public static void insert_into_custom_db(String email, String custom1, String custom2, String custom3,
-			String custom4, String custom5) {
+		
+	public static Student_profile check_for_email( String email){
 		Student_profile model = new Student_profile();
 		
 		SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		model=session.get(Student_profile.class, email );
-		
-		model.setcustom1(custom1);
-		model.setcustom2(custom2);
-		model.setcustom3(custom3);	
-		model.setcustom4(custom4);
-		model.setcustom5(custom5);
-		System.out.println("value stored in Db");	
-		session.getTransaction().commit();
-		session.close();
+		return model;
 	}
-	
+
 	public static List<String> getDeptID(int DeptID) {
 Student_profile model = new Student_profile();
 		
