@@ -37,7 +37,7 @@ required-field{
 <div class="container">
 
 <div id="nav">
-<h4>Choose to Edit application</h4><br>
+<h4>Check Status of the Application</h4><br>
 <br>
 </div>
 

@@ -42,7 +42,7 @@ public class SendEmail {
                 InternetAddress.parse(recipient));
             message.setSubject("Application Decision:UNC Charlotte");
             message.setText("Dear Student,"
-                + "\n\n You have been admitted into UNC Charlotte Please log into Application portal for further Instructions");
+                + "\n\n You have been admitted into UNC Charlotte Please log into Application portal for further Instructions"+"\n\n Thanks,"+"\n\n UNC Charlotte Team");
 
             Transport.send(message);
 
@@ -80,7 +80,7 @@ public class SendEmail {
                 InternetAddress.parse(recipient));
             message.setSubject("Application Decision:UNC Charlotte");
             message.setText("Dear Student,"
-                + "\n\n We are sorry to Inform you that you have not been admitted into UNC Charlotte.We wish you luck for your future");
+                + "\n\n We are sorry to Inform you that you have not been admitted into UNC Charlotte.We wish you luck for your future"+"\n\n Thanks,"+"\n\n UNC Charlotte Team");
 
             Transport.send(message);
 
@@ -90,4 +90,45 @@ public class SendEmail {
             throw new RuntimeException(e);
         }
     }
+    public void sendtomailaccept(String recipient,String name) {
+
+        final String username = "lakshmananrm18@gmail.com";
+        final String password = "laks@1993";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+          new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+          });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("lakshmananrm18@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse(recipient));
+            message.setSubject("Application Decision:UNC Charlotte");
+            message.setText("Dear "+name+","
+                + "\n\n Thank you for accepting the offer from UNC Charlotte.Below are the login Credentials to the UNC Charlotte Website"
+            	+"\n\n Username: your emailid"
+                +"\n\n Password:1234567"
+                +"\n\n Thanks,"+"\n\n UNC Charlotte Team"	
+            		);
+
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

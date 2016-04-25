@@ -50,17 +50,17 @@ public class loginServlet extends HttpServlet {
         if (action == null) {
             url = "/AdminHome.jsp";
         }
-        if (action.equals("Create CS Application form")||action.equals("Send Email to Selected CS Students")||action.equals("Send Email to Rejected CS Students")) 
+        if (action.equals("View all CS applications")||action.equals("Create CS Application form")||action.equals("Send Email to Selected CS Students")||action.equals("Send Email to Rejected CS Students")) 
         {
         	this.Dept_ID="Create CS Application form";
         	Dept=1;
         }
-        if (action.equals("Create EE Application form")||action.equals("Send Email to Selected EE Students")||action.equals("Send Email to Rejected EE Students")) 
+        if (action.equals("View all EE applications")||action.equals("Create EE Application form")||action.equals("Send Email to Selected EE Students")||action.equals("Send Email to Rejected EE Students")) 
         {
         	this.Dept_ID="Create EE Application form";
         	Dept=2;
         }
-        if (action.equals("Create ME Application form")||action.equals("Send Email to Selected ME Students")||action.equals("Send Email to Rejected ME Students")) 
+        if (action.equals("View all ME applications")||action.equals("Create ME Application form")||action.equals("Send Email to Selected ME Students")||action.equals("Send Email to Rejected ME Students")) 
         {
         	this.Dept_ID="Create ME Application form";
         	Dept=3;
@@ -163,6 +163,7 @@ public class loginServlet extends HttpServlet {
             		applications.set(0,applications.get(0));
             	}
                 request.setAttribute("applications", applications);
+                request.setAttribute("dept", Dept);
                 
                 System.out.println(applications);
                 
@@ -199,9 +200,18 @@ public class loginServlet extends HttpServlet {
                 	 StudentStatusDao status=new StudentStatusDao();
                 	 applications=StudentStatusDao.getDeptID("selected", Dept);
                  SendEmail email=new SendEmail();
+                 if(applications.isEmpty())
+                 {
+                	 JOptionPane.showMessageDialog(null, "Noone has been selected yet", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
+                	 request.setAttribute("msg", "Application already exists");
+                     
+                 }
+                 else
+                 {
                  for(int i=0;i<applications.size();i++)
                  {
                 	email.sendtomail(applications.get(i)); 
+                 }
                  }
                  url="/AdminHome.jsp";
                  }
@@ -210,9 +220,17 @@ public class loginServlet extends HttpServlet {
                 	 StudentStatusDao status=new StudentStatusDao();
                 	 applications=StudentStatusDao.getDeptID("rejected", Dept);
                  SendEmail email=new SendEmail();
+                 if(applications.isEmpty())
+                 {
+                	 JOptionPane.showMessageDialog(null, "Noone has been rejected yet", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
+                	 request.setAttribute("msg", "Application already exists");
+                 }
+                 else
+                 {
                  for(int i=0;i<applications.size();i++)
                  {
                 	email.sendtomailreject(applications.get(i)); 
+                 }
                  }
                  url="/AdminHome.jsp";
                  }

@@ -144,7 +144,7 @@ form {
  <form action="StudentEditapplicationServlet" method="post" class="button"> 
  <input type="hidden" name ="email" value="<%= session.getAttribute("email") %>">
  
-<input type = "submit" class="button button2" name="" value = "Edit application">
+<input type = "submit" class="button button2" name="new" value = "Edit application">
 </form></div>
 <div><span class="arrow-down"></span></div>
 		<div id="tbox1">
@@ -157,7 +157,7 @@ form {
 </div>
 	<div id="tbox1">
 			
-			<form action="StudentEditapplicationServlet+"  method="post" class="button">
+			<form action="StudentEditapplicationServlet"  method="post" class="button">
 			<input type="hidden"  name ="email" value="<%= session.getAttribute("email") %>">
  <input type = "submit" class="button button3" name="new" value = "Application Status">
 </form>  </div>

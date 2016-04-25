@@ -111,6 +111,7 @@ Released   : 20131025
 			<h2>Applications</h2>
 			</div>
 			<form action="AppListControllerServlet" method="post">
+		<input type="hidden" name ="dept" value="<%= request.getAttribute("dept") %>"><br>
 		
 			<c:forEach items="${requestScope.applications}"
                var="currentName"     >

@@ -20,7 +20,8 @@ public class StudentEditapplicationServlet extends HttpServlet {
 		
 		 HttpSession session = request.getSession();
 				 String email = request.getParameter("email");
-				   	
+				 String action = request.getParameter("new");
+				   	String url="";
 				   	csdepartment m1= new csdepartment();
 				   	medepartment m2= new medepartment();
 				   	eedepartment m3= new eedepartment();
@@ -37,8 +38,13 @@ public class StudentEditapplicationServlet extends HttpServlet {
 				   	session.setAttribute("d1", "CS");
 				   	session.setAttribute("d2", "ME");
 				   	session.setAttribute("d3", "EE");
-				   	
-				   	String url="/Student_editapplication.jsp";
+				   	if(action.equals("Edit application")){
+				    url="/Student_editapplication.jsp";
+				   	}
+				   
+				   	if(action.equals("Application Status")){
+					   	url="/status.jsp";
+					   	}
 				   	getServletContext().getRequestDispatcher(url).forward(request, response);
 				
 				   	

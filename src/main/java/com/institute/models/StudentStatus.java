@@ -15,6 +15,10 @@ public class StudentStatus {
 	private String emailid ;
 	@Column (name="Status")
 	private String Status;
+	@Column (name="offer")
+	private String offer;
+	@Column (name="mailsent")
+	private String mailsent;
 	
 	public int getDeptid() {
 		return DeptId;
@@ -40,5 +44,17 @@ public class StudentStatus {
 	}
 	public void setCutoff(String Status) {
 		this.Status = Status;
+	}
+	public String getoffer() {
+		return offer;
+	}
+	public void setoffer(String offer) {
+		this.offer = offer;
+	}
+	public String getmailsent() {
+		return mailsent;
+	}
+	public void setmailsent(String mailsent) {
+		this.mailsent = mailsent;
 	}
 }

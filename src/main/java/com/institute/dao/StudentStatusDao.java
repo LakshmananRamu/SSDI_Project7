@@ -31,7 +31,7 @@ String user1="";
 		return resultList;
 	}
 
-	public static StudentStatus getstatus(String DeptID) {
+	public static StudentStatus getstatus(String DeptID,int Dept) {
 		SessionFactory sessionfactory =  new Configuration().configure("studentstatus.cfg.xml").buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
@@ -39,12 +39,15 @@ String user1="";
 		
 		StudentStatus user = new StudentStatus();
 String user1="";
-			String hql = "FROM student_status u WHERE u.emailid=:DeptID ";
+			String hql = "FROM student_status u WHERE u.emailid=:DeptID and u.DeptId=:Dept ";
 			Query query = session.createQuery(hql);
 			query.setParameter("DeptID", DeptID);
+			query.setParameter("Dept", Dept);
 			
 		List<StudentStatus> resultList = query.list();
-			user=resultList.get(0);
+		if(!(resultList.isEmpty())){	
+		user=resultList.get(0);
+		}
 			session.getTransaction().commit();
 			session.close();
 

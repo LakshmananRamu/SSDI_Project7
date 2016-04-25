@@ -41,18 +41,26 @@
         <h5>University Application Form-Application Decision</h5>
       </div>
       <div class='panel-body'>
-        <form action="application" class='form-horizontal' role='form'>
+        <form action="selected" class='form-horizontal' role='form'>
           <div class='form-group'>
+           <input type="hidden" name ="email" value="<%= session.getAttribute("email") %>"><br>
+          <input type="hidden" name ="dept" value="<%= request.getAttribute("Dept") %>"><br>
+          
+          
             <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Congratulations You have been Selected.Please select your Decision </label>
             <div class='col-md-2'>
-              <select class='form-control' id='id_accomodation' name="custom_sections">
+              <select class='form-control' id='offer' name="offer">
                 <option>Accept</option>
                 <option>Reject</option>
                
               </select>
             </div>
           </div>
-          
+          <div class='form-group'>
+            <div class='col-md-offset-4 col-md-3'>
+              <button class='btn-lg btn-primary' type='submit' name='application' value="CS Decision">Submit Decision</button>
+            </div>
+          </form>
           
       </div>
     </div>

@@ -183,6 +183,13 @@
     <servlet-name>StudentstatusServlet</servlet-name>
  <url-pattern>/StudentStatusServlet</url-pattern>
 </servlet-mapping>
-
+<servlet>
+    <servlet-name>StudentselectServlet</servlet-name>
+ <servlet-class>com.institute.controller.SelectedServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+    <servlet-name>StudentselectServlet</servlet-name>
+ <url-pattern>/selected</url-pattern>
+</servlet-mapping>
 </web-app>
 

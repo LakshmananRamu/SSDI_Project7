@@ -39,7 +39,21 @@ public class AppList extends HttpServlet {
 		 String url = "";
 		
 		 String action = request.getParameter("action");
-		 
+		 String dept = request.getParameter("dept");
+		 int deptid=0;
+		 if(dept.equals("1"))
+		 {
+			 deptid=1;
+		 }
+		 if(dept.equals("2"))
+		 {
+			 deptid=2;
+		 }
+		 if(dept.equals("3"))
+		 {
+			 deptid=3;
+		 }
+		
 		 System.out.println("abc"+action);
 		 
 		 SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
@@ -63,7 +77,7 @@ public class AppList extends HttpServlet {
 				student=StudentWeightageDao.getDeptID(result.get(0));
 				StudentStatus status=new StudentStatus();
 				StudentStatusDao status1=new StudentStatusDao();
-				status=status1.getstatus(result.get(0));
+				status=status1.getstatus(result.get(0),deptid);
 				int GPA=student.getGPA();
 				int GRE=student.getGRE();
 				int IELTS=student.getIELTSorTOEFL();
@@ -72,8 +86,18 @@ public class AppList extends HttpServlet {
 				int degree=student.getBachelorsDegree();
 				int total=degree+Work+IELTS+custom+GPA+GRE;
 				String result1=status.getStatus();
-				JOptionPane.showMessageDialog(null, "<html>"+"<h1> Name :"+action+"</h1></br><h2>Weightage Sections</h2></br><b>GPa</b> : "+GPA+"<br> <b>GRE</b> : "+GRE+"<br> <b>IELTSorTOEFL</b> : "+IELTS+"<br> <b>Work Experience</b> : "+Work+"<br> <b>Custom Questions</b> : "+custom+"<br> <b>Bachelor's Degree</b> : "+degree+"<br> <b>Total Weightage</b> : "+total+"<br> <b>Status</b> : "+result1+"</html>", "InfoBox:Status " , JOptionPane.INFORMATION_MESSAGE);
-            	request.setAttribute("msg", "Application already exists");
+				System.out.println("abc"+result1);
+	
+				if(result1==null){
+					JOptionPane.showMessageDialog(null,"Did not Apply","InfoBox:Status " , JOptionPane.INFORMATION_MESSAGE);
+						
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "<html>"+"<h1> Name :"+action+"</h1></br><h2>Weightage Sections</h2></br><b>GPa</b> : "+GPA+"<br> <b>GRE</b> : "+GRE+"<br> <b>IELTSorTOEFL</b> : "+IELTS+"<br> <b>Work Experience</b> : "+Work+"<br> <b>Custom Questions</b> : "+custom+"<br> <b>Bachelor's Degree</b> : "+degree+"<br> <b>Total Weightage</b> : "+total+"<br> <b>Status</b> : "+result1+"</html>", "InfoBox:Status " , JOptionPane.INFORMATION_MESSAGE);
+	            		
+				}
+				request.setAttribute("msg", "Application already exists");
                 url = "/applications.jsp";
                 session1.getTransaction().commit();
     			session1.close();

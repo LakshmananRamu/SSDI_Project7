@@ -48,29 +48,30 @@ public class StudentstatusServlet extends HttpServlet {
         String emailid = request.getParameter("email");
         
         String action = request.getParameter("action");
+        System.out.println("action"+action);
         if (action == null) {
             url = "/Home.jsp";
         }
-        if (action.equals("CS Application")) 
+        if (action.equals("CS application")) 
         {
         	Dept=1;
         }
-        if (action.equals("EE Application form")) 
+        if (action.equals("EE application")) 
         {
         	Dept=2;
         }
-        if (action.equals("ME Application form")) 
+        if (action.equals("ME application")) 
         {
         	
         	Dept=3;
         }
         
-        
+        request.setAttribute("Dept", Dept);
         StudentStatus applications;
-                 if(action.equals("ME Application form")||action.equals("EE Application form")||action.equals("CS Application form"))          
+                 if(action.equals("ME application")||action.equals("EE application")||action.equals("CS application"))          
                  {
                 	 StudentStatusDao status=new StudentStatusDao();
-                	 applications=StudentStatusDao.getstatus(emailid);
+                	 applications=StudentStatusDao.getstatus(emailid,Dept);
                 	 String result=applications.getStatus();
                  if(result.equals("selected"))
                  {

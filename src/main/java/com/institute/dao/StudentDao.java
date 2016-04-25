@@ -212,4 +212,27 @@ Student_profile model = new Student_profile();
 		session.close();
 		return result;	}
 
+
+public static String getname(String email) {
+Student_profile model = new Student_profile();
+		
+		SessionFactory sessionfactory =  new Configuration().configure("studentprofile.cfg.xml").buildSessionFactory();
+		Session session = sessionfactory.openSession();
+		session.beginTransaction();
+		String hql="Select firstname from studentprofile where Emailid=:email";
+		Query query = session.createQuery(hql);
+		query.setParameter("email", email);
+		
+		List<String> result=query.list();
+		String user=result.get(0);
+		//String email="l@uncc.e";
+		//model=session.get(Student_profile.class,DeptID);
+		
+		//String result=model.getFirstname();
+			
+		//System.out.println("value stored in Db"+result);	
+		session.getTransaction().commit();
+		session.close();
+		return user;	}
+
 }
