@@ -73,10 +73,19 @@ public class StudentstatusServlet extends HttpServlet {
                 	 StudentStatusDao status=new StudentStatusDao();
                 	 applications=StudentStatusDao.getstatus(emailid,Dept);
                 	 String result=applications.getStatus();
-                 if(result.equals("selected"))
+                	 String offer=applications.getoffer();
+                 
+                	 
+                	 if(result.equals("selected")&&offer==null)
                  {
                 url="/Selected.jsp";	 
                  }
+                	 if(offer!=null)
+                	 {
+                		 JOptionPane.showMessageDialog(null, "You have already made your decision", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
+                      	request.setAttribute("msg", "Application already exists");
+                          url = "/Home.jsp";	
+                	 }
                  if(result.equals("rejected"))
                  {
                 	 JOptionPane.showMessageDialog(null, "We are sorry to let you know that you have not been offered admission", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
@@ -89,7 +98,13 @@ public class StudentstatusServlet extends HttpServlet {
                 	 JOptionPane.showMessageDialog(null, "Application Decision have not been made", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
                  	request.setAttribute("msg", "Application already exists");
                      url = "/Home.jsp";	 
-                 }	         
+                 }	  
+                 else if(!(result.equals("wiatinglist"))&&!(result.equals("not available"))&&!(result.equals("selected"))&&!(result.equals("rejected")))
+                 {
+                	 JOptionPane.showMessageDialog(null, "Application Decision have not been made", "InfoBox:Error " , JOptionPane.INFORMATION_MESSAGE);
+                  	request.setAttribute("msg", "Application already exists");
+                      url = "/Home.jsp";
+                 }
         getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 	

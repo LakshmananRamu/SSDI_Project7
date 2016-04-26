@@ -98,7 +98,7 @@
 			<div class="title">
 				<h2>Department Head</h2>
 			</div>
-			<form action class="button">
+			<form action="Department_login.jsp" class="button">
 			<input type="submit" class="button button3" name="action" value="Department Login"/></form>
 			</div>
 		</div>

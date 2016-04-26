@@ -18,7 +18,7 @@ public class StudentWeightageDao {
 		
 
 	}
-	public static StudentWeightage getDeptID(String DeptID) {
+	public static StudentWeightage getDeptID(String DeptID,int dept) {
 		SessionFactory sessionfactory =  new Configuration().configure("studentweightage.cfg.xml").buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
@@ -26,9 +26,10 @@ public class StudentWeightageDao {
 		
 		StudentWeightage user = new StudentWeightage();
 
-			String hql = " FROM student_weightage u WHERE u.Studentid =:DeptID ";
+			String hql = " FROM student_weightage u WHERE u.Studentid =:DeptID and DeptID=:dept ";
 			Query query = session.createQuery(hql);
 			query.setParameter("DeptID", DeptID);
+			query.setParameter("dept", dept);
 			
 		List<StudentWeightage> resultList = query.list();
 			if (!(resultList.isEmpty()))

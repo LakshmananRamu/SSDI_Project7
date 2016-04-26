@@ -74,7 +74,7 @@ public class AppList extends HttpServlet {
     			session1.beginTransaction();
     		
     			StudentWeightage student=new StudentWeightage();
-				student=StudentWeightageDao.getDeptID(result.get(0));
+				student=StudentWeightageDao.getDeptID(result.get(0),deptid);
 				StudentStatus status=new StudentStatus();
 				StudentStatusDao status1=new StudentStatusDao();
 				status=status1.getstatus(result.get(0),deptid);

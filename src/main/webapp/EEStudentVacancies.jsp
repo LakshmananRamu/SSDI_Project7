@@ -44,24 +44,18 @@
         
           <div class='form-group'>
             <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Student Vacancies</label>
-            <div class='col-md-8'>
-              <div class='col-md-2'>
-                <div class='form-group internal'>
-                  <input class='form-control col-md-8' id='id_adults' placeholder='Section Name' type='text'>
-                </div>
-              </div>
-            </div>
+            
           </div>
           <div class='form-group'>
             <div class='col-md-8'>
               <div class='col-md-3 indent-small'>
                 <div class='form-group internal'>
-                  <input class='form-control' id='Student Vacancies' placeholder='Student Vacancies' name=Student Vacancies type='number'>
+                  <input class='form-control' id='Student Vacancies' placeholder='Student Vacancies' name=StudentVacancies type='number'>
                 </div>
               </div>
               <div class='col-md-3 indent-small'>
                 <div class='form-group internal'>
-                  <input class='form-control' id='Student Cutoff' placeholder='Student Cutoff' name=Student Cutoff type='number'>
+                  <input class='form-control' id='Student Cutoff' placeholder='Student Cutoff' name=StudentCutoff type='number'>
                 </div>
               </div>
                <div class='form-group'>

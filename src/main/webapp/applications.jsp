@@ -104,11 +104,11 @@ Released   : 20131025
 			</div>
 		</div>
 	</div>
-</div>
+	
 <div id="page-wrapper">
 	<div id="page" class="container">
 		<div class="title">
-			<h2>Applications</h2>
+			<h2><%= request.getAttribute("value") %> Applications</h2>
 			</div>
 			<form action="AppListControllerServlet" method="post">
 		<input type="hidden" name ="dept" value="<%= request.getAttribute("dept") %>"><br>

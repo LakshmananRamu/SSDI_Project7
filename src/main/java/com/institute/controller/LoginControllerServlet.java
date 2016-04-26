@@ -2,9 +2,12 @@ package com.institute.controller;
 import com.institute.dao.StudentDao;
 import com.institute.models.students;
 import com.institute.dao.CollegeDao;
+import com.institute.dao.DepartmentsDao;
 import com.institute.models.officer;
 import com.institute.models.Department;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.*;
 import javax.servlet.*;
 
@@ -38,7 +41,55 @@ public class LoginControllerServlet extends HttpServlet {
 				   	System.out.println(emailid);
 				   	//students model=null;
 				   	//officer model=null;
-					 
+			if(action.equals("department"))
+			{
+				Department dept=new Department();
+				CollegeDao deptdao=new CollegeDao();
+				dept=deptdao.check_for_email_password_department(emailid);
+			
+			if(dept != null){
+				  if(emailid.equals(dept.getEmailid())&& password.equals(dept.getPassword())){
+					  session.setAttribute("email", dept.getEmailid());
+					  int Dept=0;
+					  String value=""; 
+					  if(emailid=="lramumee@uncc.edu")
+					  {
+						  Dept=1;
+						  value="CS";
+					  }
+					  if(emailid=="l@uncc.edu")
+					  {
+						  Dept=2;
+						  value="EE";
+					  }
+					  if(emailid=="la@uncc.edu")
+					  {
+						  Dept=3;
+						  value="ME";
+					  }
+					  List<String> applications ;
+		            	//= new ArrayList<String>(); 
+		            			//StudentDao.getDeptID(this.Dept);
+		                applications= StudentDao.getDeptID(Dept);
+		            	for(int i=0;i<applications.size();i++)
+		            	{
+		            		applications.set(0,applications.get(0));
+		            	}
+		                request.setAttribute("applications", applications);
+		                request.setAttribute("dept", Dept);
+		                request.setAttribute("value", value);
+		                
+		                
+					  url="/applications.jsp";
+				  }
+				  else if(!(emailid.equals(dept.getEmailid()))|| !password.equals(dept.getPassword())){
+					  request.setAttribute("errmessage", "*incorrect password");
+					  request.setAttribute("given_email", emailid);
+					  request.setAttribute("given_password", password);
+					  url="/Department_login.jsp";
+				  }
+				}
+			}
 	      if (action.equals("student")){
 			
 	    	   	students model = new students();

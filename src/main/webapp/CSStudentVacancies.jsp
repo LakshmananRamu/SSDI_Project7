@@ -50,12 +50,12 @@
             <div class='col-md-8'>
               <div class='col-md-3 indent-small'>
                 <div class='form-group internal'>
-                  <input class='form-control' id='StudentVacancies' placeholder='Student Vacancies' name=StudentVacancies type='text'>
+                  <input class='form-control' id='StudentVacancies' placeholder='Student Vacancies' name=StudentVacancies type='text' required>
                 </div>
               </div>
               <div class='col-md-3 indent-small'>
                 <div class='form-group internal'>
-                  <input class='form-control' id='StudentCutoff' placeholder='Student Cutoff' name=StudentCutoff type='text'>
+                  <input class='form-control' id='StudentCutoff' placeholder='Student Cutoff' name=StudentCutoff type='text' required>
                 </div>
               </div>
                <div class='form-group'>

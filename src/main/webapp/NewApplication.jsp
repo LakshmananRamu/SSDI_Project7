@@ -92,6 +92,7 @@
                 </div>
               </div>
             </div>
+            
           </div>   <div class='form-group'>
             <div class='col-md-offset-4 col-md-3'>
               <button class='btn-lg btn-primary' type='submit' name='application' value="<%= request.getAttribute("Dept_ID") %>">Create Application</button>
